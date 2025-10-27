@@ -1,0 +1,22 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3ee2a859af33179409bc161de2125e95, type: 3}
+  m_Name: HuaGuoShan
+  m_EditorClassIdentifier: 
+  MapName: HuaGuoShan
+  MapPrefab: {fileID: 2069147637925572514, guid: b53bb7884b9e77744a8521c975544924, type: 3}
+  JueSeChuShengDian: {x: 0, y: 0, z: 0}
+  MapPrefabPath: Assets/GameData/Battle/HuaGuoShan/Prefabs/HuaGuoShanScene.prefab
+  ShuaGuaDian: []
+  XiangJiWeiZhiYuZhi:
+  - {x: 0, y: 0}
+  - {x: 54, y: 0}

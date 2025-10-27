@@ -1,0 +1,91 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 861f689c88085f9498cc7f6195edfb4b, type: 3}
+  m_Name: 1000
+  m_EditorClassIdentifier: 
+  character:
+    SkillCharacter: {fileID: 0}
+    SkillAnimClip: {fileID: 7400000, guid: f6719fc5fbb103e459e3a32009540b79, type: 2}
+    AnimProgress: 100
+    IsLoopAnim: 0
+    AnimLoopCount: 0
+    IsSetCustomLength: 0
+    CustomLength: 0
+    AnimLength: 0.6
+    CurrentAnimLength: 0.6
+  skillCfg:
+    SkillIcon: {fileID: 0}
+    SkillName: 1000
+    skillBefore: 0
+    skillRelease: 0
+    skillAfter: 0
+    NeedEnergyValue: 0
+    SkillCdTime: 0
+    SkillType: 0
+    SkillHitEffect: {fileID: 0}
+    SkillHitEffectPath: 
+    HitEffectSurvivalTime: 0
+    SkillHitSound: {fileID: 0}
+    ShowSkillPortrait: 0
+    SkillPortraitObj: {fileID: 0}
+    SkillDes: 
+  damageCfgList: []
+  effectCfgList:
+  - EffectObj: {fileID: 0}
+    SkillEffect: {fileID: 922269645846460302, guid: 931e4b2e38a38b344a9cb529b2d39fcc, type: 3}
+    SkillEffectPath: Assets/GameData/Hall/SunWuKong/SkillEffect/EffectPrefab/Sun_Attack0.prefab
+    SkillEffectAnim: {fileID: 7400000, guid: 018df4d61590dac4b80b676051166cc9, type: 2}
+    SkillEffectAnimLength: 0.73333335
+    TriggerTime: 0
+    EndTime: 0.74
+    EffectScale: {x: 1, y: 1, z: 1}
+    effectOffsetPos: {x: 1.1, y: -0.8, z: 0}
+    EffectRotation: {x: 0, y: 0, z: 0}
+    characterFilp: -1
+    isSetTransParent: 0
+    transParent: 0
+    IsAddDamage: 0
+    skillDamageCfg:
+      triggerTime: 0
+      EndTime: 0
+      TriggerInterval: 0
+      IsFollowEffect: 0
+      damageType: 0
+      damageRate: 0
+      damageDetectionMode: 0
+      BoxSize: {x: 1, y: 1, z: 1}
+      BoxOffset: {x: 0, y: 0, z: 0}
+      SphereOffest: {x: 0, y: 0, z: 0}
+      radius: 1
+      MinRadius: 0
+      MaxRadius: 0
+      Angle: 0
+      colliderPosType: 0
+      layerMask:
+        serializedVersion: 2
+        m_Bits: 0
+      AddBuffs: 
+      triggerSkillId: 0
+    IsFollowRelease: 0
+    IsMoveEffect: 0
+    ActionConfig:
+      TriggerTime: 0
+      MoveActionType: 0
+      heightPos: {x: 0, y: 0, z: 0}
+      movePos: {x: 0, y: 0, z: 0}
+      DurationTime: 0
+      MoveActionFinishOperate: 0
+      AttachBuff: 
+      ComboSkillId: 0
+  audioCfgList: []
+  actionCfgList: []
+  buffCfgList: []
