@@ -9,7 +9,7 @@ public class Skill
     /// 技能id
     /// </summary>
     public int SkillId;
-    
+
     /// <summary>
     ///技能创建者 
     /// </summary>
@@ -29,21 +29,21 @@ public class Skill
     /// 技能伤害列表
     /// </summary>
     public List<SkillDamageConfig> DamageCfgList;
-    
+
     /// <summary>
     /// 技能特效配置
     /// </summary>
     private List<SkillEffectConfig> mEffectCfgList;
-    
+
     /// <summary>
     /// 技能移动配置
     /// </summary>
     private List<SkillActionConfig> mActionCfgList;
-    
+
     /// <summary>
     /// 技能音乐配置
     /// </summary>
-    private List<SkillAudioConfig>  mAudioCfgList;
+    private List<SkillAudioConfig> mAudioCfgList;
 
     /// <summary>
     /// 引导类型技能位置
@@ -96,15 +96,13 @@ public class Skill
     /// </summary>
     public void SkillExecute()
     {
-        Debug.Log(mCurrentRunTime);
-        
         CreateSkillEffect();
-        
+
         if (mCurrentRunTime > mSkillData.character.AnimLength)
         {
             SkillEnd();
         }
-        
+
         mCurrentRunTime += Time.deltaTime;
     }
 
@@ -120,19 +118,100 @@ public class Skill
             {
                 Debug.Log("创建特效");
                 skillEffectConfig.mEffectCreated = true;
-                AssetsRequest assetsRequest = await ZMAsset.InstantiateObjectAsync(skillEffectConfig.SkillEffectPath,null);
+                AssetsRequest assetsRequest =
+                    await ZMAsset.InstantiateObjectAsync(skillEffectConfig.SkillEffectPath, null);
 
                 effectObj = assetsRequest.obj;
-                
+
+                //特效位置同步到玩家位置
                 effectObj.transform.position = SkillCreate.transform.position;
 
-                effectObj.transform.position =  new Vector3(effectObj.transform.position.x + skillEffectConfig.effectOffsetPos.x * SkillCreate.GetMianChaoXiang(),
-                    effectObj.transform.position.y + skillEffectConfig.effectOffsetPos.y , effectObj.transform.position.z + skillEffectConfig.effectOffsetPos.z);
-                
+                //添加特效偏移
+                effectObj.transform.position = new Vector3(
+                    effectObj.transform.position.x +
+                    skillEffectConfig.effectOffsetPos.x * SkillCreate.GetMianChaoXiang(),
+                    effectObj.transform.position.y + skillEffectConfig.effectOffsetPos.y,
+                    effectObj.transform.position.z + skillEffectConfig.effectOffsetPos.z);
+
+                //设置特效缩放
                 effectObj.transform.localScale = skillEffectConfig.EffectScale;
+
+                //设置特效朝向
+                if (SkillCreate.GetMianChaoXiang() == 1)
+                {
+                    effectObj.transform.eulerAngles = new Vector3(0, -180, 0);
+                }
+                else if (SkillCreate.GetMianChaoXiang() == -1)
+                {
+                    effectObj.transform.eulerAngles = new Vector3(0, 0, 0);
+                }
+
+                List<Collider2D> detectedColliders = new List<Collider2D>();
+
+                int triggerCount = 0;
+
+                //计时器用来销毁特效
+                LogicTimerManager.Instance.DelayCall(skillEffectConfig.EndTime - skillEffectConfig.TriggerTime, () =>
+                {
+                    //如果特效附加了伤害 特效存活期间进行伤害检测
+                    if (skillEffectConfig.IsAddDamage)
+                    {
+                        //盒子
+                        if (skillEffectConfig.skillDamageCfg.damageDetectionMode == DamageDetectionMode.BOX3D)
+                        {
+                            if (!effectObj.GetComponent<BoxCollider2D>())
+                            {
+                                effectObj.AddComponent<BoxCollider2D>();
+                            }
+
+                            BoxCollider2D boxCollider = effectObj.GetComponent<BoxCollider2D>();
+                            boxCollider.offset = skillEffectConfig.skillDamageCfg.BoxOffset;
+                            boxCollider.size = skillEffectConfig.skillDamageCfg.BoxSize;
+
+                            // 获取碰撞盒的世界坐标边界
+                            Bounds bounds = boxCollider.bounds;
+
+                            // 使用Physics.OverlapBox进行物理检测
+                            Collider2D[] hits = Physics2D.OverlapBoxAll(
+                                bounds.center,          // 中心点 (Vector2)
+                                bounds.size,            // 大小 (Vector2) - 注意这里是size不是extents
+                                effectObj.transform.eulerAngles.z,  // 旋转角度 (float - Z轴旋转)
+                                skillEffectConfig.skillDamageCfg.layerMask
+                            );
+
+                            #region 触发伤害
+
+                            foreach (var collider in hits)
+                            {
+                                //不存在证明第一次检测到 触发一次伤害
+                                if (!detectedColliders.Contains(collider))
+                                {
+                                    //调用受伤接口
+                                    Debug.Log(collider.name);
+                                    detectedColliders.Add(collider);
+                                }
+                            }
+
+                            //判断是否是多段伤害触发多段伤害
+                            if (skillEffectConfig.skillDamageCfg.triggerTime != 0)
+                            {
+                                if (mCurrentRunTime >=
+                                    skillEffectConfig.skillDamageCfg.triggerTime * (triggerCount + 1))
+                                {
+                                    //调用一次受害接口
+                                    Debug.Log(triggerCount-1);
+                                    triggerCount++;
+
+                                }
+                            }
+
+                            #endregion
+
+                        }
+                    }
+                }, () => { ZMAsset.Release(effectObj); });
             }
         }
-        
     }
 
     /// <summary>
@@ -140,9 +219,7 @@ public class Skill
     /// </summary>
     private void DestorySkillEffect()
     {
-        
     }
-
 
     private void SkillEnd()
     {
@@ -150,7 +227,7 @@ public class Skill
         {
             skillEffect.mEffectCreated = false;
         }
-        
+
         IsSkillEnd = true;
     }
 }

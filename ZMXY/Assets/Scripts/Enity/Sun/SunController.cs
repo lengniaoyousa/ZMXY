@@ -65,13 +65,18 @@ public partial class SunController : Enity
     void CheckGround()
     {
         // 计算射线起始位置（考虑偏移）
-        Vector2 rayOrigin = (Vector2)transform.position + raycastOffset;
+       // Vector2 rayOrigin = (Vector2)transform.position + raycastOffset ;
+        Vector2 rayOrigin = (Vector2)transform.position + new Vector2(raycastOffset.x* GetMianChaoXiang(), raycastOffset.y);
+        
+        // 根据角色朝向决定射线方向
+        float facingDirection = GetMianChaoXiang() > 0 ? 1f : -1f;
+        Vector2 rayDirection = Vector2.right * facingDirection;
         
         // 向右发射射线
-        RaycastHit2D hit = Physics2D.Raycast(rayOrigin, Vector2.right, raycastDistance, groundLayer);
+        RaycastHit2D hit = Physics2D.Raycast(rayOrigin, rayDirection , raycastDistance , groundLayer);
         
         // 可视化射线（在Scene视图中显示）
-        Debug.DrawRay(rayOrigin, Vector2.right * raycastDistance, hit.collider != null ? Color.green : Color.red);
+        Debug.DrawRay(rayOrigin, rayDirection * raycastDistance , hit.collider != null ? Color.green : Color.red);
         
         // 检测是否碰到地面
         if (hit.collider != null)

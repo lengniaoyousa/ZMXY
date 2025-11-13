@@ -7,15 +7,15 @@ using UnityEngine;
 public class LogicTiemr : TimerBehaviour
 {
 
-    private int mDelayTime;
+    private float mDelayTime;
     private int mLoopCount;
 
-    private int mCurLogicFrameAccTime;
+    private float mCurAccTime;
     /// <summary>
     /// 总运行时间
     /// </summary>
     private float mTotalTime;
-    public LogicTiemr(int delayTime, Action updateAction, Action timerCallBack, int loopCount = 1) //1,2
+    public LogicTiemr(float delayTime, Action updateAction, Action timerCallBack, int loopCount = 1) //1,2
     {
         this.mDelayTime = delayTime;
         this.mLoopCount = loopCount;
@@ -29,12 +29,12 @@ public class LogicTiemr : TimerBehaviour
     public override void OnLogicFrameUpdate()
     {
         mUpdateTiemrCallBack?.Invoke();
-        mCurLogicFrameAccTime += 20;
-        if (mCurLogicFrameAccTime >= mDelayTime)
+        mCurAccTime += Time.deltaTime;
+        if (mCurAccTime >= mDelayTime)
         {
             //Debug.Log($"mCurLogicFrameAccTime:{mCurLogicFrameAccTime}   mDelayTime:{mDelayTime}");
             mTimerFinishCalllBack?.Invoke();
-            mCurLogicFrameAccTime -= mDelayTime;
+            mCurAccTime -= mDelayTime;
             mTotalTime -= mDelayTime;
             //如果循环次数<=1 说明当前计时器工作完成
             if (mLoopCount <= 1 || mTotalTime <= 0)

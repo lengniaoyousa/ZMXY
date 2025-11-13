@@ -41,7 +41,7 @@ public class MoveToAction : ActionBehaviour
     /// <summary>
     /// 当前累计运行的时间
     /// </summary>
-    private int mAccRumTime; 
+    private float mAccRumTime; 
     
     /// <summary>
     /// 当前移动的时间缩放
@@ -63,7 +63,7 @@ public class MoveToAction : ActionBehaviour
     
     public override void OnUpdate()
     {
-        mAccRumTime+=20;
+        mAccRumTime+=Time.deltaTime;
         
         mTimeScale = mAccRumTime/mMoveTime;
 

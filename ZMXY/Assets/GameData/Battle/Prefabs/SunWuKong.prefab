@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 7808328765195917982}
   - component: {fileID: 8930057045712857740}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Pants
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -94,7 +94,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8220055508294624077}
   - component: {fileID: 6799036526833312482}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Head
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -178,7 +178,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2434555453306170388}
   - component: {fileID: 7241342363990991778}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: WeaponEffect
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -262,7 +262,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2857620836083771643}
   - component: {fileID: 3676265128826898310}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: RightArm
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -346,7 +346,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2274818932777958224}
   - component: {fileID: 6459824396593734987}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: LeftArm
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -430,7 +430,7 @@ GameObject:
   m_Component:
   - component: {fileID: 6219547803769418972}
   - component: {fileID: 8031898530977502501}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: 'HeadOutfit '
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -514,7 +514,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1928812807032813590}
   - component: {fileID: 1233386422970516804}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Animtor
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -583,7 +583,7 @@ GameObject:
   m_Component:
   - component: {fileID: 7048117312645348554}
   - component: {fileID: 4539271882157059674}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Weapon
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -667,7 +667,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1218521681069544744}
   - component: {fileID: 8346086081119026786}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: LeftHand
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -751,7 +751,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8076334011719680333}
   - component: {fileID: 4124456276193085540}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: RightHand
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -835,7 +835,7 @@ GameObject:
   m_Component:
   - component: {fileID: 7135681077069017486}
   - component: {fileID: 1560675603142891859}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Belt
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -919,7 +919,7 @@ GameObject:
   m_Component:
   - component: {fileID: 3545283051812919430}
   - component: {fileID: 7416390861914168248}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: RightLeg
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1003,7 +1003,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1596493096094531172}
   - component: {fileID: 9165402195924991412}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: LeftLeg
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1088,7 +1088,7 @@ GameObject:
   - component: {fileID: 1003929461419793503}
   - component: {fileID: 3272466997573744013}
   - component: {fileID: 1828584205196121074}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: ChiBang
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1183,37 +1183,6 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
---- !u!1 &7137935795241355669
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 1154568078343014567}
-  m_Layer: 0
-  m_Name: GroundCheck
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &1154568078343014567
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7137935795241355669}
-  serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 3565442741053839795}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &7868720048876368847
 GameObject:
   m_ObjectHideFlags: 0
@@ -1224,7 +1193,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2411816098020551880}
   - component: {fileID: 948269940361428829}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: WeaponEffect2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1308,7 +1277,7 @@ GameObject:
   m_Component:
   - component: {fileID: 5752712979992824977}
   - component: {fileID: 9132749150328472608}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Boby
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1393,7 +1362,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4556201226519627359}
   - component: {fileID: 4319897005498304983}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: LeftShoulder
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1479,7 +1448,7 @@ GameObject:
   - component: {fileID: 9200682282342029252}
   - component: {fileID: 4385436714249661085}
   - component: {fileID: 7312487103151309594}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: SunWuKong
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1500,7 +1469,6 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 1928812807032813590}
-  - {fileID: 1154568078343014567}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!50 &9200682282342029252
@@ -1614,7 +1582,7 @@ GameObject:
   m_Component:
   - component: {fileID: 7722027983032888102}
   - component: {fileID: 2545790717433968651}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: WeaponEffect3
   m_TagString: Untagged
   m_Icon: {fileID: 0}

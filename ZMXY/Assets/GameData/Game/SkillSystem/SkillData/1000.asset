@@ -41,6 +41,8 @@ MonoBehaviour:
   damageCfgList: []
   effectCfgList:
   - EffectObj: {fileID: 0}
+    EffectName: 
+    mEffectCreated: 0
     SkillEffect: {fileID: 922269645846460302, guid: 931e4b2e38a38b344a9cb529b2d39fcc, type: 3}
     SkillEffectPath: Assets/GameData/Hall/SunWuKong/SkillEffect/EffectPrefab/Sun_Attack0.prefab
     SkillEffectAnim: {fileID: 7400000, guid: 018df4d61590dac4b80b676051166cc9, type: 2}
@@ -53,17 +55,17 @@ MonoBehaviour:
     characterFilp: -1
     isSetTransParent: 0
     transParent: 0
-    IsAddDamage: 0
+    IsAddDamage: 1
     skillDamageCfg:
       triggerTime: 0
       EndTime: 0
       TriggerInterval: 0
       IsFollowEffect: 0
-      damageType: 0
+      damageType: 1
       damageRate: 0
-      damageDetectionMode: 0
-      BoxSize: {x: 1, y: 1, z: 1}
-      BoxOffset: {x: 0, y: 0, z: 0}
+      damageDetectionMode: 1
+      BoxSize: {x: 1.8, y: 1, z: 1}
+      BoxOffset: {x: 0.8, y: 0.2, z: 0}
       SphereOffest: {x: 0, y: 0, z: 0}
       radius: 1
       MinRadius: 0
@@ -72,7 +74,7 @@ MonoBehaviour:
       colliderPosType: 0
       layerMask:
         serializedVersion: 2
-        m_Bits: 0
+        m_Bits: 128
       AddBuffs: 
       triggerSkillId: 0
     IsFollowRelease: 0

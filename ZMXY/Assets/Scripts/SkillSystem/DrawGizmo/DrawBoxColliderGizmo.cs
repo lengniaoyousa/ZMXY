@@ -1,62 +1,55 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
 public class DrawBoxColliderGizmo : MonoBehaviour
 {
-    [Header("BoxCollider 参数")]
-    public Vector3 size = new Vector3(1f, 1f, 1f);    // 大小
-    public Vector3 center = new Vector3(0f, 0.5f, 0f); // 偏移（中心点）
-    public Vector3 rotation = new Vector3(0f, 0f, 0f);//旋转
+    private BoxCollider2D  boxCollider2D;
     
-    [Header("绘制设置")]
-    public Color wireColor = Color.red;
-    public Color solidColor = new Color(0f, 1f, 0f, 0.3f);
-    public bool drawSolid = true;
-    public bool drawWire = true;
-
-    void OnDrawGizmos()
+    private Color gizmoColor = new Color(1, 0, 0, 1);
+    
+    private void Start()
     {
-        // 保存原来的矩阵
-        Matrix4x4 originalMatrix = Gizmos.matrix;
-        
-        // 设置新的矩阵（考虑物体的位置、旋转和缩放）
-        Gizmos.matrix = Matrix4x4.TRS(
-            transform.position + Quaternion.Euler(rotation) * center, // 世界坐标位置 + 偏移
-            transform.rotation,                               // 物体的旋转
-            transform.lossyScale                              // 世界坐标的缩放
-        );
-
-        // 绘制实心盒子
-        if (drawSolid)
-        {
-            Gizmos.color = solidColor;
-            Gizmos.DrawCube(Vector3.zero, size);
-        }
-
-        // 绘制线框盒子
-        if (drawWire)
-        {
-            Gizmos.color = wireColor;
-            Gizmos.DrawWireCube(Vector3.zero, size);
-        }
-
-        // 恢复原来的矩阵
-        Gizmos.matrix = originalMatrix;
-        
-        // 绘制中心点
-        DrawCenterPoint();
+        boxCollider2D =  GetComponent<BoxCollider2D>();
     }
 
-    void DrawCenterPoint()
+    private void OnDrawGizmos()
     {
-        Vector3 worldCenter = transform.position + transform.rotation * center;
+
+        if (!gameObject.activeInHierarchy) return;
         
-        Gizmos.color = Color.red;
-        Gizmos.DrawSphere(worldCenter, 0.1f);
+        boxCollider2D =  GetComponent<BoxCollider2D>();
         
-        // 绘制从物体中心到Box中心的连线
-        Gizmos.color = Color.yellow;
-        Gizmos.DrawLine(transform.position, worldCenter);
+        if (boxCollider2D == null) return;
+        
+        Gizmos.color = gizmoColor;
+        DrawBox2DGizmo(boxCollider2D);
+    }
+    
+    private void DrawBox2DGizmo(BoxCollider2D collider)
+    {
+
+        Vector2 offset = collider.offset;
+        Vector2 size = collider.size;
+        
+        // 计算世界坐标
+        Vector3 worldCenter = transform.TransformPoint(offset);
+        Vector3 worldSize = new Vector3(size.x * transform.lossyScale.x, 
+            size.y * transform.lossyScale.y, 
+            0.1f);  // Z轴给一个很小的厚度
+        
+        // 应用变换
+        Matrix4x4 originalMatrix = Gizmos.matrix;
+        Gizmos.matrix = Matrix4x4.TRS(worldCenter, transform.rotation, Vector3.one);
+        
+        // 绘制填充和线框
+        //Gizmos.DrawCube(Vector3.zero, worldSize);
+        
+        //Gizmos.color = new Color(gizmoColor.r, gizmoColor.g, gizmoColor.b, 1f);
+        Gizmos.DrawWireCube(Vector3.zero, worldSize);
+        
+        // 恢复矩阵
+        Gizmos.matrix = originalMatrix;
     }
 }

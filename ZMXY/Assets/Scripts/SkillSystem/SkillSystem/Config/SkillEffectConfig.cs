@@ -137,11 +137,11 @@ public class SkillEffectConfig
 
             if (skillDamageCfg.damageDetectionMode == DamageDetectionMode.BOX3D)
             {
-                DrawBoxColliderGizmo boxCollider = mCloneEffect.GetComponent<DrawBoxColliderGizmo>();
+                //DrawBoxColliderGizmo boxCollider = mCloneEffect.GetComponent<DrawBoxColliderGizmo>();
 
-                boxCollider.size = skillDamageCfg.BoxSize;
+               // boxCollider.size = skillDamageCfg.BoxSize;
 
-                boxCollider.center = skillDamageCfg.BoxOffset;
+               // boxCollider.center = skillDamageCfg.BoxOffset;
 
                 //boxCollider.rotation =  mCloneEffect.transform.rotation;
 

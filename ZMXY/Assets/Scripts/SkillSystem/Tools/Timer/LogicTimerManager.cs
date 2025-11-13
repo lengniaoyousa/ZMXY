@@ -13,7 +13,7 @@ public class LogicTimerManager : Singleton<LogicTimerManager>
     /// 开始进行行动
     /// </summary>
     /// <param name="action"></param>
-    public void DelayCall(int delayTime, Action updateAction,Action timerCallBack, int loopCount = 1)
+    public void DelayCall(float delayTime, Action updateAction,Action timerCallBack, int loopCount = 1)
     {
         LogicTiemr timer = new LogicTiemr(delayTime, updateAction,timerCallBack, loopCount);
         mTimerList.Add(timer);

@@ -11,7 +11,7 @@ public partial class SunController
         //空中移动速度
         rigidbody2D.velocity = new Vector2(airSpeed *GetInputX() , rigidbody2D.velocity.y);
 
-        if (IsGrounded())
+        if (IsGrounded() && rigidbody2D.velocity.y<0)
         {
             state = SunWuKongState.Idle;
         }
